@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My Application</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="LageText">Large Text</string>
+    <string name="hint_TextField">Введите имя</string>
+    <string name="New_button">New Button</string>
+    <string name="buttonOld">New Button2</string>
+    <string name="hint_ButtonRed">Красный цвет</string>
+    <string name="textButtonRed">Красный</string>
+    <string name="textButtonYellow">Желтый</string>
+    <string name="hint_ButtonYellow">Передать информацию</string>
+    <string name="hint_ButtonGreen">Зеленый цвет</string>
+    <string name="textButtonGreen">About...</string>
+    <string name="about_Button">О программе...</string>
+    <string name="title_activity_about">about</string>
+    <string name="about_text"><![CDATA[Система шифрования FROBOT: ]]></string>
+    <string name="about_title">О программе.</string>
+    <string name="title_activity2">Дополнительная активность</string>
+    <string name="buttonSend">Передать</string>
+    <string name="text_editTo">кому</string>
+    <string name="text_editDetails">детально</string>
+    <string name="text_textView">Подробно</string>
+    <string name="text_textViewTo">Кому</string>
+    <string name="text_bottom_ok">OK</string>
+    <string name="text_bottom_concel">Отмена</string>
+    <string name="text_rb1">Alpha</string>
+    <string name="text_rb2">Scale</string>
+    <string name="text_rb3">Translate</string>
+    <string name="onOKClick">onOKClick</string>
+    <string name="text_rb4">Rotate</string>
+    <string name="text_rb5">Combo</string>
+    <string name="title_activity_show_time">Time</string>
+
+</resources>
