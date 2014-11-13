@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MyActivity"
+    android:background="@android:color/background_light"
+    android:clickable="false"
+    android:id="@+id/myLayout">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textButtonRed"
+        android:id="@+id/ButtonRed"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:hint="@string/hint_ButtonRed" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonSend"
+        android:id="@+id/ButtonYellow"
+        android:hint="@string/hint_ButtonYellow"
+
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/ButtonGreen"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textButtonGreen"
+        android:id="@+id/ButtonGreen"
+        android:hint="@string/about_Button"
+
+        android:layout_below="@+id/ButtonYellow"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_above="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:hint="@string/text_editTo" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText3"
+        android:layout_toEndOf="@+id/textView"
+        android:inputType="text"
+        android:layout_above="@+id/ButtonYellow"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:hint="@string/text_editDetails" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/text_textView"
+        android:id="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/editText3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/text_textViewTo"
+        android:id="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/editText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewA2"
+        android:layout_below="@+id/ButtonGreen"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/background_kitty" />
+
+</RelativeLayout>
