@@ -32,12 +32,25 @@
             <intent-filter>
                 <action android:name="com.example.mmm.myapplication.intent.action.ShowTime" />
                 <action android:name="com.example.mmm.myapplication.intent.action.ShowDate" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.mmm.myapplication.Activity2" />
         </activity>
+        <activity
+            android:name=".MyBrowser"
+            android:label="@string/title_activity_my_browser" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="http" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>

@@ -8,8 +8,8 @@
     <string name="hint_TextField">Введите имя</string>
     <string name="New_button">New Button</string>
     <string name="buttonOld">New Button2</string>
-    <string name="hint_ButtonRed">Красный цвет</string>
-    <string name="textButtonRed">Красный</string>
+    <string name="hint_ButtonRed">Показать в браузере</string>
+    <string name="textButtonRed">Перейти</string>
     <string name="textButtonYellow">Желтый</string>
     <string name="hint_ButtonYellow">Передать информацию</string>
     <string name="hint_ButtonGreen">Зеленый цвет</string>
@@ -33,5 +33,6 @@
     <string name="text_rb4">Rotate</string>
     <string name="text_rb5">Combo</string>
     <string name="title_activity_show_time">Time</string>
+    <string name="title_activity_my_browser">MyBrowser</string>
 
 </resources>

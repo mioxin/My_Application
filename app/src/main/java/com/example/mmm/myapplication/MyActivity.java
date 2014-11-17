@@ -50,6 +50,7 @@ public class MyActivity extends Activity {
                         Uri uri = Uri.parse(edUser.getText().toString());
                         action = !(uri.getScheme() == "tel") ? intent.ACTION_VIEW : intent.ACTION_DIAL;
                         intent = new Intent(action, uri);
+                        intent.putExtra("uri", edUser.getText().toString());
                         startActivity(intent);
                         break;
                     case R.id.ButtonYellow:
