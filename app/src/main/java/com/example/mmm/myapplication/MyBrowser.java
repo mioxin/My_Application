@@ -16,7 +16,7 @@ public class MyBrowser extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_browser);
 
-        TextView tv = (TextView)findViewById(R.id.tv);
+        TextView tv = (TextView)findViewById(R.id.tvID);
 
         WebView webView = (WebView) findViewById(R.id.webView);
         Uri data = getIntent().getData();

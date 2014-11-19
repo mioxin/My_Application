@@ -34,5 +34,8 @@
     <string name="text_rb5">Combo</string>
     <string name="title_activity_show_time">Time</string>
     <string name="title_activity_my_browser">MyBrowser</string>
+    <string name="tvId">ID:</string>
+    <string name="butGet">Get</string>
+    <string name="hint_butGet">Получить из базы по номеру ID</string>
 
 </resources>
