@@ -70,7 +70,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:id="@+id/linearLayout1">
+        android:id="@+id/linearLayout1"
+        android:weightSum="1">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -86,17 +87,18 @@
             android:layout_height="wrap_content"
             android:text="Date"
             android:id="@+id/button2"
-            android:layout_gravity="top|bottom"
+            android:layout_gravity="top"
             android:onClick="onClick" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:text="Add"
             android:id="@+id/butAdd"
             android:hint="Добавить в базу"
-            android:onClick="onClick" />
+            android:onClick="onClick"
+            android:layout_weight="0.25" />
 
     </LinearLayout>
 
@@ -127,29 +129,29 @@
             android:inputType="number" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="@string/butGet"
             android:id="@+id/butGet"
             android:hint="@string/hint_butGet"
             android:onClick="onClick"
-            android:layout_weight="1" />
+            android:layout_gravity="top" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Del"
+            android:text="@string/butDel"
             android:id="@+id/butDel"
             android:onClick="onClick"
-            android:layout_weight="1" />
+            android:layout_gravity="top" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clear"
+            android:text="@string/butClear"
             android:id="@+id/butClear"
-            android:layout_weight="1"
-            android:onClick="onClick" />
+            android:onClick="onClick"
+            android:layout_gravity="top" />
 
     </LinearLayout>
 

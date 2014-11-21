@@ -3,8 +3,14 @@ package com.example.mmm.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -17,7 +23,7 @@ public class ShowTime extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_time);
-
+        final String LOG_TAG = "myLogs";
         Intent intent = getIntent();
         String action = intent.getAction();
         String format ="", info = "";
@@ -34,6 +40,25 @@ public class ShowTime extends Activity {
         String time = sdf.format(new Date(System.currentTimeMillis()));
         TextView tvTime = (TextView) findViewById(R.id.tvTime);
         tvTime.setText(info + time);
+
+        LayoutInflater ltInflater = getLayoutInflater();
+        LinearLayout lLayout = (LinearLayout)findViewById(R.id.lLayout);
+        View view1 = ltInflater.inflate(R.layout.text, lLayout, true);
+        ViewGroup.LayoutParams lp1 = view1.getLayoutParams();
+//        lLayout.addView(view1);
+
+        Log.d(LOG_TAG, "Class of view: " + view1.getClass().toString());
+        Log.d(LOG_TAG, "Class of layoutParams of view1: " + lp1.getClass().toString());
+//        Log.d(LOG_TAG, "Text of view: " + ((TextView) view1).getText());
+
+        RelativeLayout rLayout = (RelativeLayout)findViewById(R.id.rLayout);
+        View view2 = ltInflater.inflate(R.layout.text, rLayout, true);
+        ViewGroup.LayoutParams lp2 = view2.getLayoutParams();
+//        lLayout.addView(view1);
+
+        Log.d(LOG_TAG, "Class of view: " + view2.getClass().toString());
+        Log.d(LOG_TAG, "Class of layoutParams of view2: " + lp2.getClass().toString());
+//        Log.d(LOG_TAG, "Text of view: " + ((TextView) view2).getText());
     }
 
 

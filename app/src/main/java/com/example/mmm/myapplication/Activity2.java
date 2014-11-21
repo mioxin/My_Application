@@ -8,9 +8,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -89,6 +91,7 @@ public class Activity2 extends Activity implements SeekBar.OnSeekBarChangeListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity2);
+
         butOk = (Button) findViewById(R.id.button_ok);
         butCan = (Button) findViewById(R.id.button_concel);
         lPar1 = (LinearLayout.LayoutParams) butOk.getLayoutParams();
@@ -104,10 +107,10 @@ public class Activity2 extends Activity implements SeekBar.OnSeekBarChangeListen
         butClear = (Button)findViewById(R.id.butClear);
         editText = (EditText)findViewById(R.id.editText);
         radiogr = (RadioGroup)findViewById(R.id.radiogr);
+        tv = (TextView)findViewById(R.id.textA2);
 
         dbHelper = new DBHelper(this);
 
-        tv = (TextView)findViewById(R.id.textA2);
         String user = "Ктото";
         String gift = "Чтото";
         user = getIntent().getExtras().getString("user");
@@ -233,7 +236,8 @@ public class Activity2 extends Activity implements SeekBar.OnSeekBarChangeListen
                                         ", textA2 = " + c.getString(textA2ColIndex) +
                                         ", switch = " + c.getString(switchColIndex) +
                                         ", progress = " + c.getString(progressColIndex) +
-                                        ", radiog = " + c.getInt(radiogColIndex));
+                                        ", radiog = " + ((RadioButton)findViewById(c.getInt(radiogColIndex))).getText().toString()
+                        );
 // переход на следующую строку
 // а если следующей нет (текущая - последняя), то false - выходим из цикла
                     } while (c.moveToNext());

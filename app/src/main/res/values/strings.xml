@@ -37,5 +37,7 @@
     <string name="tvId">ID:</string>
     <string name="butGet">Get</string>
     <string name="hint_butGet">Получить из базы по номеру ID</string>
+    <string name="butDel">Del</string>
+    <string name="butClear">Clear</string>
 
 </resources>
