@@ -1,18 +1,22 @@
 package com.example.mmm.myapplication;
 
 import android.content.Context;
-import android.widget.ExpandableListView;
-import android.widget.SimpleExpandableListAdapter;
+import android.graphics.Color;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 
 /**
  * Created by palchuk on 25.11.2014.
  */
 public class AdapterHelper{
-    String[] animals = new String[]{"Котики", "Собачки"};
+    //String[] animals = new String[]{"Котики", "Собачки"};
     String[] catnames = new String[] { "Рыжик", "Барсик", "Мурзик",
             "Мурка", "Васька", "Томасина", "Бобик"};
     String[] dognames = new String[]{"Кристина", "Пушок",
@@ -27,69 +31,75 @@ public class AdapterHelper{
             " и прогнозного моделирования (деревья решений, линейная регрессия, логистическая  регрессия, ",
             "нейронные сети, ансамбль моделей, ассоциативные правила и другие  модели)"
     };
-    int[] colors = new int[2];
+    int img = R.drawable.kitty;
+    // картинки для отображения динамики
+    final int positive = android.R.drawable.arrow_up_float;
+    final int negative = android.R.drawable.arrow_down_float;
 
-    ArrayList<Map<String,String>> arAnimals;
-    ArrayList<Map<String,String>> arChildItems;
-    ArrayList<ArrayList<Map<String,String>>> arChildData;
-    Map <String,String> m;
+    //ArrayList<Map<String,String>> arAnimals;
+    ArrayList<Map<String,Object>> arItems;
+    //ArrayList<ArrayList<Map<String,String>>> arChildData;
+    Map <String,Object> m;
+
+    class MySimpleAdapter extends SimpleAdapter {
+        public MySimpleAdapter(Context context,
+                               List<? extends Map<String, ?>> data, int resource,
+                               String[] from, int[] to) {
+            super(context, data, resource, from, to);
+        }
+        @Override
+        public void setViewText(TextView v, String text) {
+// метод супер-класса, который вставляет текст
+            super.setViewText(v, text);
+// если нужный нам TextView, то разрисовываем
+            if (text.toCharArray()[0] == 'К') v.setTextColor(Color.RED); else
+                v.setTextColor(Color.GREEN);
+        }
+        @Override
+        public void setViewImage(ImageView v, int value) {
+// метод супер-класса
+            super.setViewImage(v, value);
+// разрисовываем ImageView
+            if (value == negative) v.setBackgroundColor(Color.RED); else
+            if (value == positive) v.setBackgroundColor(Color.GREEN);
+        }
+    }
 
     Context ctx;
     AdapterHelper(Context _ctx) {
         ctx = _ctx;
     }
-    SimpleExpandableListAdapter adapter;
+    MySimpleAdapter adapter;
 
-    SimpleExpandableListAdapter getAdapter() {
+    MySimpleAdapter getAdapter() {
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,catnames);
-//        lView.setAdapter(adapter);
-        // заполняем коллекцию групп из массива с названиями групп
-        arAnimals = new ArrayList<Map<String, String>>();
-        for (String group : animals) {
-// заполняем список аттрибутов для каждой группы
-            m = new HashMap<String, String>();
-            m.put("groupName", group);
-            arAnimals.add(m);
-        }
-// список аттрибутов групп для чтения
-        String groupFrom[] = new String[] {"groupName"};
-// список ID view-элементов, в которые будет помещены аттрибуты групп
-        int groupTo[] = new int[] {android.R.id.text1};
-// создаем коллекцию для коллекций элементов
-        arChildData = new ArrayList<ArrayList<Map<String, String>>>();
-        // создаем коллекцию элементов для первой группы
-        arChildItems = new ArrayList<Map<String, String>>();
+        arItems = new ArrayList<Map<String, Object>>();
 // заполняем список аттрибутов для каждого элемента
         for (int i = 0; i < catnames.length; i++){
-            m = new HashMap<String, String>();
+            m = new HashMap<String, Object>();
             m.put("Name", catnames[i]);
             m.put("Subscr", subscr1[i]);
-            arChildItems.add(m);
+            img = (catnames[i].toCharArray()[0] == 'К') ? negative:positive;
+            m.put("Img",img);
+            arItems.add(m);
         }
-// добавляем в коллекцию коллекций
-        arChildData.add(arChildItems);
-// создаем коллекцию элементов для второй группы
-        arChildItems = new ArrayList<Map<String, String>>();
         for (int i = 0; i < dognames.length; i++){
-            //for (String cat : catnames) {
-            m = new HashMap<String, String>();
+            m = new HashMap<String, Object>();
             m.put("Name", dognames[i]);
             m.put("Subscr", subscr2[i]);
-            arChildItems.add(m);
+            img = (dognames[i].toCharArray()[0] == 'К') ? negative:positive;
+            m.put("Img",img);
+            arItems.add(m);
         }
-        arChildData.add(arChildItems);
+
+        //arChildData.add(arChildItems);
         // список аттрибутов элементов для чтения
-        String childFrom[] = new String[] {"Name","Subscr"};
+        String childFrom[] = new String[] {"Name","Subscr","Img"};
 // список ID view-элементов, в которые будет помещены аттрибуты элементов
-        int childTo[] = new int[] {R.id.tvItem, R.id.tvSmall};
-        adapter = new SimpleExpandableListAdapter(
+        int childTo[] = new int[] {R.id.tvItem, R.id.tvSmall, R.id.imageView};
+        adapter = new MySimpleAdapter(
                 ctx,
-                arAnimals,
-                android.R.layout.simple_expandable_list_item_1,
-                groupFrom,
-                groupTo,
-                arChildData,
+                arItems,
                 R.layout.item,
                 childFrom,
                 childTo
@@ -97,13 +107,9 @@ public class AdapterHelper{
 
     return adapter;
     }
-    String getGroupText(int groupPos) {
-        return ((Map<String,String>)(adapter.getGroup(groupPos))).get("groupName");
-    }
-    String getChildText(int groupPos, int childPos) {
-        return ((Map<String,String>)(adapter.getChild(groupPos, childPos))).get("Name");
-    }
-    String getGroupChildText(int groupPos, int childPos) {
-        return getGroupText(groupPos) + " " + getChildText(groupPos, childPos);
-    }
+
+//    String getChildText(int groupPos, int childPos) {
+//        return ((Map<String,String>)(adapter.getChild(groupPos, childPos))).get("Name");
+//    }
+
 }

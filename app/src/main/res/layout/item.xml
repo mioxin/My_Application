@@ -21,4 +21,15 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="120dp" />
 
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="left|top" />
+
+    <CheckBox
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical" />
+
 </FrameLayout>
